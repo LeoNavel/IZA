@@ -1,11 +1,5 @@
 import Foundation
 
-#if os(Linux)
-    print("Linux does not support auto bridging")
-    print("You need to explicitly convert with:")
-    print("\tNSString(string:)")
-    print("\tString(describing:)")
-#endif
 let someNSString: NSString = "Hello!"
 
 // On linux use String(describing:) or <variable>.description
