@@ -1,9 +1,11 @@
 import Squirrel
 import NutView
 
+// Init server
 let server = Server()
 
-server.get("/hello") {
+// static route /hello
+server.get("hello") {
     return "Hello"
 }
 
@@ -12,16 +14,24 @@ struct Person: Decodable {
     let age: Int
 }
 
+// dynamic route /Johny/31 /Tom/21 ...
 server.get(":name/:age") { (person: Person) in
+
+    // return person struct as JSON
     return person
 }
 
-var number = 0
+// static route /view
+var visits = 0
 server.get("view") {
-    number += 1
-    return try View(name: "Hello", with: ["number": number])
+    visits += 1
+
+    // return View
+    return try View(name: "Hello", with: ["number": visits])
 }
 
+// Add custom 404 handler
 ErrorHandler.sharedInstance.addErrorHandler(handler: Custom404())
 
+// Run server
 try server.run()
