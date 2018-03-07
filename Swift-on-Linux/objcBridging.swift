@@ -1,3 +1,9 @@
+//
+//  objcBridging.swift
+//
+//  Created by Filip Klembara on 3/7/18.
+//
+
 import Foundation
 
 let someNSString: NSString = "Hello!"
